@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+    =====================================================
+    index.html — Campus Tech Fest
+    =====================================================
+    WHAT IS THIS FILE?
+    This is the "skeleton" of the website.  It defines
+    every piece of content you see — headings, images,
+    buttons, forms — using HTML tags.
+
+    HOW THE FILES CONNECT:
+      index.html  → structure & content
+      style.css   → colours, layout, animations
+      script.js   → interactivity (countdown, modals…)
+    =====================================================
+  -->
+
+  <!-- === Meta tags === -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Campus Tech Fest — The biggest college tech event of 2026. Hackathons, workshops, robotics expo and more. November 15, 2026." />
+
+  <title>Campus Tech Fest 2026</title>
+
+  <!-- Google Font — "Inter" gives us a clean, modern look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Our custom stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- ====================================================
+       NAVIGATION BAR
+       Fixed to the top.  Contains the logo and page links.
+       On mobile, a hamburger icon replaces the link list.
+       ==================================================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <!-- Logo -->
+      <a href="#" class="nav-logo">Campus<span>TechFest</span></a>
+
+      <!-- Links (hidden on mobile until hamburger is clicked) -->
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#events">Events</a></li>
+        <li><a href="#info">Details</a></li>
+        <li><a href="#register">Register</a></li>
+      </ul>
+
+      <!-- Hamburger button (three short lines) -->
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ====================================================
+       HERO SECTION
+       The first thing visitors see — a big title, a short
+       tagline, and two call-to-action buttons.
+       ==================================================== -->
+  <section class="hero" id="hero">
+    <!-- Canvas for floating particle dots (drawn by JS) -->
+    <canvas id="hero-particles"></canvas>
+
+    <div class="hero-content">
+      <span class="hero-badge">🚀 November 15, 2026</span>
+
+      <h1>
+        Welcome to<br />
+        <span class="gradient-text">Campus Tech Fest</span>
+      </h1>
+
+      <p>
+        The biggest student-run tech event of the year.
+        Hackathons, workshops, and a robotics expo —
+        all on one electrifying day.
+      </p>
+
+      <div class="hero-buttons">
+        <!-- Scrolls smoothly to the registration section -->
+        <a href="#register" class="btn btn-primary" id="cta-register">
+          Register Now
+          <!-- Arrow SVG icon -->
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+
+        <!-- Scrolls to the events section -->
+        <a href="#events" class="btn btn-secondary" id="cta-explore">
+          Explore Events
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       COUNTDOWN TIMER
+       Four boxes that tick down to the event date.
+       JavaScript updates the numbers every second.
+       ==================================================== -->
+  <section class="countdown" id="countdown">
+    <div class="container">
+      <div class="countdown-grid">
+        <div class="countdown-item">
+          <span class="number" id="countdown-days">--</span>
+          <span class="label">Days</span>
+        </div>
+        <div class="countdown-item">
+          <span class="number" id="countdown-hours">--</span>
+          <span class="label">Hours</span>
+        </div>
+        <div class="countdown-item">
+          <span class="number" id="countdown-minutes">--</span>
+          <span class="label">Minutes</span>
+        </div>
+        <div class="countdown-item">
+          <span class="number" id="countdown-seconds">--</span>
+          <span class="label">Seconds</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       EVENTS SECTION
+       Three cards — Hackathon, Workshop, Robotics Expo.
+       Each card has an image, tag, description, and a
+       "View Details" button that opens a modal popup.
+       ==================================================== -->
+  <section class="events" id="events">
+    <div class="container">
+      <h2 class="section-title reveal">Featured Events</h2>
+      <p class="section-subtitle reveal">Three flagship competitions and experiences to choose from.</p>
+
+      <div class="events-grid">
+
+        <!-- CARD 1 — Hackathon -->
+        <article class="event-card reveal" id="card-hackathon">
+          <div class="card-image-wrapper">
+            <img src="images/hackathon.jpg" alt="Students coding during a hackathon under neon lights" class="card-image" />
+          </div>
+          <div class="card-body">
+            <span class="card-tag tag-hackathon">Hackathon</span>
+            <h3>24-Hour Hackathon</h3>
+            <p>Form a team, pick a problem track, and build a working prototype in 24 non-stop hours.</p>
+            <div class="card-meta">
+              <span>
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                Nov 15–16
+              </span>
+              <span>
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                Block A
+              </span>
+            </div>
+            <button class="btn-details" data-event="hackathon" id="btn-hackathon">
+              View Details
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </article>
+
+        <!-- CARD 2 — AI & ML Workshop -->
+        <article class="event-card reveal" id="card-workshop">
+          <div class="card-image-wrapper">
+            <img src="images/workshop.jpg" alt="Speaker presenting at a tech workshop" class="card-image" />
+          </div>
+          <div class="card-body">
+            <span class="card-tag tag-workshop">Workshop</span>
+            <h3>AI & ML Workshop</h3>
+            <p>A hands-on session where you train your first machine-learning model from scratch.</p>
+            <div class="card-meta">
+              <span>
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                Nov 15
+              </span>
+              <span>
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                Block B
+              </span>
+            </div>
+            <button class="btn-details" data-event="workshop" id="btn-workshop">
+              View Details
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </article>
+
+        <!-- CARD 3 — Robotics Expo -->
+        <article class="event-card reveal" id="card-expo">
+          <div class="card-image-wrapper">
+            <img src="images/robotics.jpg" alt="Robotics exhibition with interactive displays" class="card-image" />
+          </div>
+          <div class="card-body">
+            <span class="card-tag tag-expo">Expo</span>
+            <h3>Robotics Expo</h3>
+            <p>See 30+ student-built robots, watch drone races, and experience a live bot-battle arena.</p>
+            <div class="card-meta">
+              <span>
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                Nov 15
+              </span>
+              <span>
+                <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                Block C
+              </span>
+            </div>
+            <button class="btn-details" data-event="expo" id="btn-expo">
+              View Details
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </article>
+
+      </div><!-- /events-grid -->
+    </div>
+  </section>
+
+  <!-- ====================================================
+       EVENT INFO — Date, Venue, Registration at-a-glance
+       ==================================================== -->
+  <section class="info" id="info">
+    <div class="container">
+      <h2 class="section-title reveal">Event Details</h2>
+      <p class="section-subtitle reveal">Everything you need to know, at a glance.</p>
+
+      <div class="info-grid">
+
+        <!-- Date -->
+        <div class="info-box reveal" id="info-date">
+          <div class="info-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          </div>
+          <h3>Date</h3>
+          <p class="highlight">November 15, 2026</p>
+          <p>Saturday · 9:00 AM onwards</p>
+        </div>
+
+        <!-- Venue -->
+        <div class="info-box reveal" id="info-venue">
+          <div class="info-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <h3>Venue</h3>
+          <p class="highlight">Main Campus</p>
+          <p>Auditorium · Seminar Halls · Open Arena</p>
+        </div>
+
+        <!-- Registration -->
+        <div class="info-box reveal" id="info-registration">
+          <div class="info-icon">
+            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3>Registration</h3>
+          <p class="highlight">Free for all students</p>
+          <p>Open until November 10, 2026</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       REGISTRATION FORM
+       Collects name, email, and preferred event.
+       NOTE: This is a front-end demo.  The form validates
+       inputs and shows a success message, but does NOT send
+       data to any server.  To make it fully functional, you
+       would connect it to a backend or a service like
+       Formspree / Google Forms.
+       ==================================================== -->
+  <section class="register" id="register">
+    <div class="container">
+      <div class="register-wrapper reveal">
+        <h2>Register Now</h2>
+        <p>Secure your spot — it only takes a moment.</p>
+
+        <!-- The form -->
+        <form id="register-form" novalidate>
+          <div class="form-group">
+            <label for="reg-name">Full Name</label>
+            <input type="text" id="reg-name" placeholder="e.g. Aarav Patel" required />
+          </div>
+
+          <div class="form-group">
+            <label for="reg-email">Email Address</label>
+            <input type="email" id="reg-email" placeholder="e.g. aarav@college.edu" required />
+          </div>
+
+          <div class="form-group">
+            <label for="reg-event">Preferred Event</label>
+            <select id="reg-event" required>
+              <option value="">— Select an event —</option>
+              <option value="hackathon">24-Hour Hackathon</option>
+              <option value="workshop">AI & ML Workshop</option>
+              <option value="expo">Robotics Expo</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-register" id="btn-register-submit">
+            Submit Registration
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+
+        <!-- Success message (hidden by default, shown by JS) -->
+        <div id="register-success" class="register-success">
+          <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          <h3>You're registered! 🎉</h3>
+          <p>This is a front-end demo — no data was sent to a server.<br/>In a real app, you'd connect this form to a backend service.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       MODAL POPUP
+       Appears when "View Details" is clicked on any card.
+       Content is injected by JavaScript.
+       ==================================================== -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal" role="dialog" aria-labelledby="modal-title">
+      <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+      <h2 id="modal-title"></h2>
+      <p id="modal-desc"></p>
+      <ul class="detail-list" id="modal-list"></ul>
+      <a href="#register" class="btn btn-primary" id="modal-register-btn" style="width:100%;justify-content:center;">
+        Register for this event
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       FOOTER
+       ==================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 <span>Campus Tech Fest</span>. Built with ❤️ by students, for students.</p>
+    </div>
+  </footer>
+
+  <!-- Our JavaScript file — loaded at the end so the HTML
+       has already been parsed by the time the script runs. -->
+  <script src="script.js"></script>
+
+</body>
+</html>
